@@ -28,13 +28,18 @@ import Sidebar from "./Pages/Sidebar";
 import QuizPage from "./Pages/QuizPage";
 import FAQ from "./Pages/FAQ";
 import ForgotPassword from "./Pages/Forgotpassword";
-// import ResetPassword from "./Pages/ResetPassword";
+import Dashboard from "./Pages/Dashboard";
+import Myprofile from "./Pages/Myprofile";
+import Booking from "./Pages/Booking";
+
+
+import ResetPassword from "./Pages/ResetPassword";
 
 
 const App = () => {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         {/* Home Page - Keep non-linked components here */}
         <Route
@@ -55,8 +60,8 @@ const App = () => {
         <Route path="/FAQ" element={<FAQ />} />
         <Route path="/Quiz" element={<Quiz />} />
         <Route path="/QuizPage" element={<QuizPage />} />
-     <Route path="/AnxietySection" element={<AnxietySection />} />
-     <Route path="/Article" element={<Article />} />
+        <Route path="/AnxietySection" element={<AnxietySection />} />
+        <Route path="/Article" element={<Article />} />
         <Route path="/Audiotape" element={<Audiotape />} />
         <Route path="/Testimonials" element={<Testimonials />} />
         <Route path="/Book_sessions" element={<Book_sessions />} />
@@ -73,15 +78,13 @@ const App = () => {
         <Route path="/Therapist" element={<Therapist />} />
         <Route path="/Sidebar" element={<Sidebar />} />
         <Route path="/Forgotpassword" element={<ForgotPassword />} />
-        {/* <Route path="/ResetPassword" element={<ResetPassword />} /> */}
-        
-        
+        <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/Myprofile" element={<Myprofile/>} />
+        <Route path="/Booking" element={<Booking/>} />
+        <Route path="/ResetPassword" element={<ResetPassword />} />
        
-
-      
-
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

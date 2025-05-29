@@ -1,4 +1,6 @@
 import React from 'react';
+import Navbar from './Navbar';
+import Footer from './Footer';
 
 const Audiotape = () => {
   const videoData = [
@@ -53,7 +55,9 @@ const Audiotape = () => {
   ];
 
   return (
-    <div className="max-w-7xl bg-[#F7F5F2] mx-auto p-6">
+    <div>
+      <Navbar />
+      <div className="max-w-7xl bg-[#F7F5F2] mx-auto p-6">
       {/* Heading */}
       <h2 className="text-3xl font-bold text-center text-[#4a766e] mb-10 ">
         Relaxing Audio & Video Resources
@@ -84,6 +88,9 @@ const Audiotape = () => {
         ))}
       </div>
     </div>
+    <Footer />
+    </div>
+    
   );
 };
 

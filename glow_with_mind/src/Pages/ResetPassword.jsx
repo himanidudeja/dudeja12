@@ -1,49 +1,61 @@
-// // src/pages/ResetPassword.jsx
-// import React, { useState } from 'react';
-// import { useParams, useNavigate } from 'react-router-dom';
+// src/pages/ResetPassword.jsx
+import React, { useState } from 'react';
 
-// import axios from 'axios';
+const ResetPassword = () => {
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
 
-// const ResetPassword = () => {
-//   const { token } = useParams(); // gets token from URL
-//   const navigate = useNavigate();
+  // Get token from the URL
+  const token = new URLSearchParams(window.location.search).get('token');
 
-//   const [password, setPassword] = useState('');
-//   const [message, setMessage] = useState('');
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-//   const handleReset = async (e) => {
-//     e.preventDefault();
-//     try {
-//       const res = await axios.post(`/auth/reset-password/${token}`, { password });
-//       setMessage(res.data.message || "Password reset successful");
-//       setTimeout(() => navigate('/login'), 2000); // redirect after 2s
-//     } catch (err) {
-//       setMessage("Invalid or expired token");
-//     }
-//   };
+    try {
+      const response = await fetch('http://localhost:3000/api/auth/reset-password', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ token, password }),
+      });
 
-//   return (
-//     <div className="flex justify-center items-center min-h-screen bg-gray-100">
-//       <form onSubmit={handleReset} className="bg-white p-8 rounded shadow-md w-96">
-//         <h2 className="text-2xl font-bold mb-4 text-center">Reset Password</h2>
+      const data = await response.json();
+      if (response.ok) {
+        setMessage('Password has been reset successfully!');
+      } else {
+        setMessage(data.message || 'Reset failed. Try again.');
+      }
+    } catch (error) {
+      setMessage('Something went wrong.');
+    }
+  };
 
-//         <input
-//           type="password"
-//           placeholder="Enter new password"
-//           className="w-full p-2 border border-gray-300 rounded mb-4"
-//           value={password}
-//           onChange={(e) => setPassword(e.target.value)}
-//           required
-//         />
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <form onSubmit={handleSubmit} className="bg-white p-8 rounded shadow-md w-96">
+        <h2 className="text-2xl font-bold text-center mb-4">Reset Password</h2>
 
-//         <button type="submit" className="w-full bg-green-500 text-white p-2 rounded hover:bg-green-600">
-//           Reset Password
-//         </button>
+        <input
+          type="password"
+          placeholder="Enter new password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          className="w-full p-2 border rounded mb-4"
+        />
 
-//         {message && <p className="text-center mt-4 text-blue-600">{message}</p>}
-//       </form>
-//     </div>
-//   );
-// };
+        <button
+          type="submit"
+          className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+        >
+          Reset Password
+        </button>
 
-// export default ResetPassword;
+        {message && <p className="text-center mt-4 text-green-600">{message}</p>}
+      </form>
+    </div>
+  );
+};
+
+export default ResetPassword;

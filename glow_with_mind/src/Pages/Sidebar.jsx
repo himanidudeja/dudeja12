@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-// import car from '../assets/carr.png'
+
 import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-// import Dashboard from './Dashboard';
+import Dashboard from './Dashboard';
 // import User from "../Components/User.jsx";
 
 import {
@@ -31,6 +31,9 @@ import {
   Avatar,
 
 } from "antd";
+import Myprofile from "./Myprofile";
+import Booking from "./Booking";
+
 
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
@@ -45,11 +48,7 @@ const Dashitems = [
   getItem("Dashboard", "Dashboard", <PieChartOutlined />),
   getItem("My Profile", "My Profile", <UserOutlined />),
   getItem("Bookings", "Bookings", <SolutionOutlined />),
-  
-  
-  // getItem("Quiz", "Quiz", <FormOutlined />),
- 
-  getItem("Report", "Report", <BlockOutlined />),
+
  
 ];
 
@@ -58,7 +57,7 @@ const Sidebar = () => {
   const [breadcrumb, setBreadcrumb] = useState(["Home"]);
   const [currentPath, setCurrentPath] = useState("Dashboard");
   console.log(currentPath)
-  const [selectedItems, setSelectedItems] = useState([]);
+  
 
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -121,7 +120,7 @@ const Sidebar = () => {
   ];
   const OPTIONS = ["Apples", "Nails", "Bananas", "Helicopters"];
 
-  const filteredOptions = OPTIONS.filter((o) => !selectedItems.includes(o));
+  // const filteredOptions = OPTIONS.filter((o) => !selectedItems.includes(o));
 
   return (
     <Layout
@@ -211,11 +210,10 @@ const Sidebar = () => {
               borderRadius: borderRadiusLG,
             }}
           >
-            {currentPath === "Dashboard" && <p></p>}
-            {currentPath === "My Profile" && <p></p> }
-            {currentPath === "Bookings" &&<p>Booking details go here...</p> }
-            
-            {currentPath === "Report" && <p>Report details go here...</p> }
+            {currentPath === "Dashboard" && <Dashboard />}
+            {currentPath === "My Profile" && <Myprofile/> }
+            {currentPath === "Bookings" &&  <Booking/> }
+       
            
           </div>
         </Content>

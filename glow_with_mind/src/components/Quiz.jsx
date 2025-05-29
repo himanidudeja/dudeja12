@@ -1,10 +1,13 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import Footer from "./Footer";
 
 const Quiz = () => {
   return (
-    <div className="flex flex-col md:flex-row bg-[#f2ede2] p-8 min-h-screen w-full">
+    
+    <div>
+      <div className="flex flex-col md:flex-row bg-[#f2ede2] p-8 min-h-screen w-full">
       {/* Animated Text and Heading */}
       <motion.div
         className="md:w-1/2 p-6 text-[#3d405b]"
@@ -60,6 +63,8 @@ const Quiz = () => {
           muted
         />
       </motion.div>
+    </div>
+    <Footer />
     </div>
   );
 };

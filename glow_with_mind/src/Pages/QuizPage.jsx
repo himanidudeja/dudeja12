@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 // Quiz Questions
 const questions = {
@@ -135,7 +137,9 @@ const QuizPage = () => {
   );
 
   return (
-    <motion.div
+    <div>
+      <Navbar />
+       <motion.div
       className={`min-h-screen ${backgroundColors[currentLevel]} p-10 flex flex-col items-center justify-center transition-colors duration-1000`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -237,6 +241,9 @@ const QuizPage = () => {
         )}
       </motion.div>
     </motion.div>
+    <Footer />
+    </div>
+   
   );
 };
 

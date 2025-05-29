@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const BookSessionForm = () => {
   const [formData, setFormData] = useState({
@@ -36,6 +38,8 @@ const BookSessionForm = () => {
   };
 
   return (
+    <div>
+    <Navbar/>
     <div className="max-w-xl mx-auto mt-20 p-6 bg-white rounded-xl shadow-lg">
       <h1 className="text-3xl font-bold mb-6 text-center text-[#3d405b]">Book Your Session</h1>
 
@@ -49,6 +53,8 @@ const BookSessionForm = () => {
           Book Session
         </button>
       </form>
+    </div>
+    <Footer/>
     </div>
   );
 };

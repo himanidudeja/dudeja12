@@ -1,9 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
+import Navbar from "./Navbar";
 
 const Hero = () => {
   return (
-    <div
+    <div>
+      <Navbar />
+        <div
       className="h-screen flex flex-col items-center justify-center text-gray-800 text-center bg-[#F7F5F2] bg-cover bg-center"
       style={{ backgroundImage: "url('/hero-bg.jpg')" }}
     >
@@ -50,6 +53,8 @@ const Hero = () => {
         </Link>
       </motion.div> */}
     </div>
+    </div>
+  
   );
 };
 

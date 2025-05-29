@@ -4,8 +4,8 @@ import { UserOutlined, MailOutlined, PhoneOutlined, LockOutlined } from '@ant-de
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-// import Navbar from '../Components/Navbar';
-// import Footer from '../Components/Footer';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
@@ -68,7 +68,7 @@ const Signup = () => {
 
   return (
     <div>
-      {/* <Navbar /> */}
+      <Navbar />
       {/* Hero Banner with background image */}
       <section
         className="h-85 bg-cover bg-center flex items-center justify-center"
@@ -225,7 +225,7 @@ const Signup = () => {
         </Modal> */}
 
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom'; // ✅ FIXED: Added useNavigate
+import { baseURL } from "../../config";
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const TherapistRegister = () => {
   const [form, setForm] = useState({
@@ -12,6 +15,8 @@ const TherapistRegister = () => {
     experience: '',
   });
 
+  const navigate = useNavigate(); // ✅ Correct position
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -21,6 +26,7 @@ const TherapistRegister = () => {
     try {
       await axios.post(`http://localhost:3000/api/auth/registration2`, form);
       alert("Therapist registered successfully!");
+      navigate("/Sidebar2"); // ✅ This will now work
     } catch (err) {
       console.error(err);
       alert("Something went wrong.");
@@ -28,7 +34,9 @@ const TherapistRegister = () => {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#e5edf4]">
+    <div>
+      <Navbar />
+      <div className="flex min-h-screen items-center justify-center bg-[#e5edf4]">
       <div className="flex w-full max-w-5xl rounded-3xl shadow-2xl overflow-hidden">
         {/* Left Side - Registration Form */}
         <motion.div
@@ -102,19 +110,21 @@ const TherapistRegister = () => {
               Register
             </motion.button>
           </form>
-
         </motion.div>
 
         {/* Right Side - Image */}
         <div className="hidden md:block md:w-1/2 bg-purple-100 relative">
           <img
-            src="/Maybe You Should Talk to Someone_ A Must Read.jpeg" // use your own image
+            src="/Maybe You Should Talk to Someone_ A Must Read.jpeg"
             alt="Register Visual"
             className="w-full h-full object-cover rounded-tr-3xl rounded-br-3xl"
           />
         </div>
       </div>
     </div>
+    <Footer />
+    </div>
+    
   );
 };
 

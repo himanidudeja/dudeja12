@@ -6,6 +6,8 @@ import GoogleAuth from "../components/GoogleAuth";
 import axios from 'axios';
 import axiosInstance from '../../axiosInstance';
 import { baseURL } from "../../config";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -33,9 +35,11 @@ const Login = () => {
       console.error("Login Failed:", error);
     }
   };
-
+const BASE_URL = import.meta.env.VITE_PROD_BASE_URL;
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#fefef7]">
+    <div>
+      <Navbar />
+      <div className="flex min-h-screen items-center justify-center bg-[#fefef7]">
       <div className="flex w-full max-w-5xl rounded-3xl shadow-2xl overflow-hidden">
         {/* Left Side - Login Form */}
         <motion.div
@@ -53,7 +57,7 @@ const Login = () => {
               <input
                 type="email"
                 name="email"
-                value={formData.username}
+                value={formData.email}
                 onChange={handleChange}
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
                 required
@@ -112,6 +116,8 @@ const Login = () => {
           />
         </div>
       </div>
+    </div>
+    <Footer />
     </div>
   );
 };

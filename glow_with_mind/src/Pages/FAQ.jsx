@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Plus, Minus } from "lucide-react"; // if you have lucide-react installed
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const FAQs = [
   {
@@ -36,7 +38,9 @@ const FAQ = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#f5f5f0] py-10 px-6">
+    <div>
+      <Navbar />
+      <div className="min-h-screen bg-[#f5f5f0] py-10 px-6">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-4xl font-bold text-green-900 mb-8">
           Anxiety FAQs
@@ -60,6 +64,9 @@ const FAQ = () => {
         </div>
       </div>
     </div>
+    <Footer />
+    </div>
+    
   );
 };
 
